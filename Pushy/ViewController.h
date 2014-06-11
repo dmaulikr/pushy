@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UISwitch *trackingActiveButton;
+@property (weak, nonatomic) IBOutlet UITextField *urlTemplate;
+@property (weak, nonatomic) IBOutlet UITextField *userField;
+@property (weak, nonatomic) IBOutlet UITextField *pushRateField;
+- (IBAction)trackingValueChanged:(id)sender;
+- (IBAction)fdssdf:(id)sender;
 
 @end

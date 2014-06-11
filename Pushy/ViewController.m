@@ -15,18 +15,44 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad
-{
+@synthesize trackingActiveButton;
+@synthesize userField;
+@synthesize urlTemplate;
+
+Pusher* pusher;
+
+- (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    Pusher* pusher = [[Pusher alloc] init:@"http://127.0.0.1:1337/figaro?u=%@&a=%f&p=%f&la=%f&lo=%f" pushRate:5 user:@"fred"];
-    [pusher start];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [[event allTouches] anyObject];
+    
+    if (![[touch view] isKindOfClass:[UITextField class]]) {
+        [self.view endEditing:YES];
+    }
+    [super touchesBegan:touches withEvent:event];
+}
+
+- (IBAction)trackingValueChanged:(id)sender {
+    if (trackingActiveButton.isOn) [self start];
+    else [pusher stop];
+    
+    
+}
+
+- (IBAction)fdssdf:(id)sender {
+    [userField resignFirstResponder];
+}
+
+- (void) start {
+    pusher = [[Pusher alloc] init: self.urlTemplate.text pushRate: [self.pushRateField.text intValue] user: self.userField.text];
+    [pusher start];
+}
 @end
