@@ -12,5 +12,5 @@
 @interface Pusher : NSObject <CLLocationManagerDelegate>
 - (void) start;
 - (void) stop;
-- (id) initWithUrl: (NSString*) url andSampleRate: (int) sampleRate andPushRate: (int) pushRate;
+- (id) init:(NSString*) url pushRate:(int)pushRate user: (NSString*) user;
 @end

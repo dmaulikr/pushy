@@ -19,7 +19,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    Pusher* pusher = [[Pusher alloc] initWithUrl:@"http://127.0.0.1:1337/figaro?data=" andSampleRate:1000 andPushRate:1000];
+    Pusher* pusher = [[Pusher alloc] init:@"http://127.0.0.1:1337/figaro?u=%@&a=%f&p=%f&la=%f&lo=%f" pushRate:5 user:@"fred"];
     [pusher start];
 }
 
