@@ -1,10 +1,7 @@
-/*
-var cradle = require('cradle');
+//set username and password here before starting!
+var credentials = 'username:password';
 
-var connection = new(cradle.Connection)('https://cdb.forskningsdata.se', 443, {
-      auth: { username: 'sounduser', password: '7i2pzeDadaiC' }
-  }).database('soundscape');
-*/
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 var http = require('http');
 var https = require('https');
@@ -13,7 +10,7 @@ var qs = require('querystring');
 
    var headers = {
      'Content-Type': 'application/json',
-     'Authorization': 'Basic ' + new Buffer('sounduser:7i2pzeDadaiC').toString('base64')
+     'Authorization': 'Basic ' + new Buffer(credentials).toString('base64')
    };
 
    var options = {
@@ -46,12 +43,10 @@ function post(url) {
    req.end();
 }
 
-post('http://127.0.0.1/figaro?u=robert&a=-56.0004&p=37.0345&la=57.12356&lo=12.42');
-
 http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World\n');
+  res.end('Ok\n');
   console.log('received ->' + req.url);
   post(req.url);
-}).listen(1337, '127.0.0.1');
-console.log('Server running at http://127.0.0.1:1337/');
+}).listen(1337);
+console.log('Server running...');
