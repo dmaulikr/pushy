@@ -93,7 +93,6 @@ CLLocation* location;
     NSHTTPURLResponse *response = nil;
     
     NSLog(urlWithData);
-    return;
     [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     
     if([response statusCode] != 200){

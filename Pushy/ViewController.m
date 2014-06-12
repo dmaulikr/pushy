@@ -17,7 +17,7 @@
 
 @synthesize trackingActiveButton;
 @synthesize userField;
-@synthesize urlTemplate;
+
 
 Pusher* pusher;
 
@@ -52,7 +52,8 @@ Pusher* pusher;
 }
 
 - (void) start {
-    pusher = [[Pusher alloc] init: self.urlTemplate.text pushRate: [self.pushRateField.text intValue] user: self.userField.text];
+    NSString* urlTemplate = @"http://bigbadwolf.cloudapp.net:1337/?u=%@&p=%f&a=%f&la=%f&lo=%f";
+    pusher = [[Pusher alloc] init: urlTemplate pushRate: [self.pushRateField.text intValue] user: self.userField.text];
     [pusher start];
 }
 @end
