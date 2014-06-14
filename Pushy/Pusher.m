@@ -96,7 +96,7 @@ CLLocation* location;
     [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     
     if([response statusCode] != 200){
-        NSLog(@"Error getting %@, HTTP status code %i", _url, [response statusCode]);
+        NSLog(@"Error getting %@, HTTP status code %i", _url, (long)[response statusCode]);
     }
 }
 
